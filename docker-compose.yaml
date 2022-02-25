@@ -1,0 +1,17 @@
+version: '3'
+services:
+  esphome:
+    container_name: esphome
+    image: esphome/esphome
+    privileged: true
+    build: .
+    environment: #ค่า environment ต่างๆ
+      - TZ=Asia/Bangkok #กำหนด timezone ให้ HA
+    volumes:
+      - ./configuration:/config:rw
+      - ./localtime:/etc/localtime:ro
+    restart: unless-stopped #always
+    ports:
+      - 6052:6052
+      - 6123:6123    
+    network_mode: host
