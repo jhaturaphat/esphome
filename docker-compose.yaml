@@ -8,7 +8,7 @@ services:
     environment: #ค่า environment ต่างๆ
       - TZ=Asia/Bangkok #กำหนด timezone ให้ HA
     volumes:
-      - ./configuration:/config:rw
+      - ./config:/config:rw
       - ./localtime:/etc/localtime:ro
     restart: unless-stopped #always
     ports:
